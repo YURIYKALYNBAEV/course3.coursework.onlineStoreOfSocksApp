@@ -38,7 +38,7 @@ public class SocksStoreController {
     @ApiResponse(responseCode = "500", description = "произошла ошибка, не зависящая от вызывающей стороны")
     public ResponseEntity<ResponseDto> issuance(@RequestBody SocksBatch socksBatch) {
         int socksCount = socksStoreService.issuance(socksBatch);
-        return ResponseEntity.ok(new ResponseDto(socksCount + "носков было отпущено со склада"));
+        return ResponseEntity.ok(new ResponseDto(socksCount + " носков было отпущено со склада"));
     }
 
     @GetMapping
@@ -62,6 +62,6 @@ public class SocksStoreController {
     @ApiResponse(responseCode = "500", description = "произошла ошибка, не зависящая от вызывающей стороны")
     public ResponseEntity<ResponseDto> reject(@RequestBody SocksBatch socksBatch) {
         int socksCount = socksStoreService.reject(socksBatch);
-        return ResponseEntity.ok(new ResponseDto(socksCount + "носков списано со склада"));
+        return ResponseEntity.ok(new ResponseDto(socksCount + " носков списано со склада"));
     }
 }

@@ -44,9 +44,9 @@ public class FileController {
         }
     }
 
-    @GetMapping("/import")
+    @PostMapping(value ="/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "Загрузка json-файла носков")
-    public ResponseEntity<String> uploadSocksJson(@RequestParam MultipartFile file) {
+    public ResponseEntity<Object> uploadSocksJson(@RequestParam MultipartFile file) {
         try {
             socksStoreService.importFromFile(file);
             return ResponseEntity.ok("Файл успешно импортирован");
@@ -61,13 +61,13 @@ public class FileController {
     @Operation(summary = "Выгрузка json-файла операций с носками")
     public ResponseEntity<InputStreamResource> downloadSocksOperationJson() {
         try {
-            File socksFile = storeOperationService.exportFile();
-            InputStreamResource resource = new InputStreamResource(new FileInputStream(socksFile));
+            File socksOperationsFile = storeOperationService.exportFile();
+            InputStreamResource resource = new InputStreamResource(new FileInputStream(socksOperationsFile));
             return ResponseEntity.ok()
                     .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                    .contentLength(socksFile.length())
+                    .contentLength(socksOperationsFile.length())
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" +
-                            socksFile.getName())
+                            socksOperationsFile.getName())
                     .body(resource);
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,9 +75,9 @@ public class FileController {
         }
     }
 
-    @GetMapping("/operation/import")
+    @PostMapping(value ="/operation/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "Загрузка json-файла операций с носками")
-    public ResponseEntity<String> uploadSocksOperationJson(@RequestParam MultipartFile file) {
+    public ResponseEntity<Object> uploadSocksOperationJson(@RequestParam MultipartFile file) {
         try {
             storeOperationService.importFromFile(file);
             return ResponseEntity.ok("Файл успешно импортирован");
