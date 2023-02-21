@@ -1,4 +1,4 @@
-package me.kalynbaev.onlinestoreofsocksapp.model;
+package me.kalynbaev.onlinestoreofsocksapp.model.socks;
 
 /**
  * Цвет носков

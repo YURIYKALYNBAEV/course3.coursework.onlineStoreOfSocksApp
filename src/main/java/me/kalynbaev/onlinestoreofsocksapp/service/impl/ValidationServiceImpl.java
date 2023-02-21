@@ -1,8 +1,8 @@
 package me.kalynbaev.onlinestoreofsocksapp.service.impl;
 
-import me.kalynbaev.onlinestoreofsocksapp.model.Color;
-import me.kalynbaev.onlinestoreofsocksapp.model.Size;
-import me.kalynbaev.onlinestoreofsocksapp.model.SocksBatch;
+import me.kalynbaev.onlinestoreofsocksapp.model.socks.Color;
+import me.kalynbaev.onlinestoreofsocksapp.model.socks.Size;
+import me.kalynbaev.onlinestoreofsocksapp.model.socks.SocksBatch;
 import me.kalynbaev.onlinestoreofsocksapp.service.ValidationService;
 import org.springframework.stereotype.Service;
 
